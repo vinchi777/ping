@@ -4,7 +4,6 @@ from flask_migrate import Migrate
 
 from config import app_config
 import logging
-
 db = SQLAlchemy()
 
 def create_app(config_name):
@@ -14,7 +13,6 @@ def create_app(config_name):
     db.init_app(app)
 
     migrate = Migrate(app, db)
-    from app import models
     from app.models import Devise, TimeStamp
 
     @app.route('/<devise_id>/<int:epoch_time>', methods=['POST'])
@@ -31,9 +29,7 @@ def create_app(config_name):
     @app.route('/<devise_id>/<from_date>/<to_date>', methods=['GET'])
     def index(devise_id, from_date=None, to_date=None):
         results = []
-
         pings = TimeStamp.get_all(devise_id, from_date, to_date)
-        app.logger.info(pings)
 
         if devise_id == 'all':
             obj = {}
