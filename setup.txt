@@ -3,8 +3,8 @@
   b. cd to folder
   c. sudo pip install virtualenv
   d. virtualenv venv
-  e. . env/bin/activate
-  f. env/bin/pip install -r requirements.txt
+  e. . venv/bin/activate
+  f. venv/bin/pip install -r requirements.txt
 
 2. Setup Database
   a. Setup ENV variables
@@ -15,8 +15,9 @@
     `CREATE DATABASE timeclock`
 
   c. Edit your db url in instance/config.py (if db created with root and no password no need to change)
-  b. Run migration 
+  e. Run migration 
     `flask db upgrade`
 
 3. Run Server
   a. `flask run`
+  b. `ruby ping.rb`
